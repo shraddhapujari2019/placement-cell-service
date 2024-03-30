@@ -1,10 +1,12 @@
 package com.iims.placementcellservice.service;
 
-import com.iims.placementcellservice.model.StudentDto;
+import com.iims.placementcellservice.entity.Student;
 
 import java.util.List;
 
 public interface StudentService {
 
-    public List<StudentDto> getStudents();
+    public List<Student> getStudents();
+
+    void createStudentUser(Student student);
 }
