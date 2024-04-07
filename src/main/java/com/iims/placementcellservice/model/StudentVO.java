@@ -7,7 +7,6 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-@JsonInclude
 public class StudentVO {
 
     private Long id;
@@ -126,6 +125,5 @@ public class StudentVO {
 
     private String role;
 
-    @JsonIgnore
     private String password;
 }

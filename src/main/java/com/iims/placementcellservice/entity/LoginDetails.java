@@ -1,13 +1,14 @@
-package com.iims.placementcellservice.model;
+package com.iims.placementcellservice.entity;
 
 import lombok.Data;
-
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 
-@Entity
+@Entity(name = "login_details")
 @Data
 public class LoginDetails {
+    @Id
     long login_id;
     String password;
     boolean is_admin;
