@@ -8,11 +8,13 @@ import com.iims.placementcellservice.repository.AdminRepo;
 import com.iims.placementcellservice.service.AdminService;
 import com.iims.placementcellservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+@Service
 public class AdminServiceImpl  implements AdminService {
     @Autowired
     private AdminRepo adminRepo;
@@ -31,7 +33,8 @@ public class AdminServiceImpl  implements AdminService {
         LoginDetails loginDetails = new LoginDetails();
         loginDetails.setLogin_id(admin.getAdmin_id());
         loginDetails.setPassword(adminVO.getPassword());
-        loginDetails.set_admin(false);
+        loginDetails.set_admin(true);
+        loginDetails.setAccount_status("Active");
         loginDetails.setPassword_expiration_date(Date.valueOf(LocalDate.now().plus(180, ChronoUnit.DAYS)));
         loginDetails.setLast_password_reset(Date.valueOf(LocalDate.now()));
 
