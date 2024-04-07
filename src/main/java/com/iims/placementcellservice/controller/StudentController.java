@@ -1,6 +1,7 @@
 package com.iims.placementcellservice.controller;
 
 import com.iims.placementcellservice.entity.Student;
+import com.iims.placementcellservice.model.StudentVO;
 import com.iims.placementcellservice.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping("/create-student")
-    public void createStudent(@RequestBody Student student){
+    public void createStudent(@RequestBody StudentVO student){
         studentService.createStudentUser(student);
     }
 }

@@ -1,11 +1,14 @@
 package com.iims.placementcellservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 @Data
-public class StudentDto {
+@JsonInclude
+public class StudentVO {
 
     private Long id;
 
@@ -121,6 +124,8 @@ public class StudentDto {
     
     private String position;
 
-    
     private String role;
+
+    @JsonIgnore
+    private String password;
 }

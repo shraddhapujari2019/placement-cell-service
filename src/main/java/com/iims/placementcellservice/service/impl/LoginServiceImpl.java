@@ -20,13 +20,13 @@ public class LoginServiceImpl implements LoginService {
     LoginRepo loginRepo;
 
     public boolean validateLogin(int uid, String password){
-        LoginDetails loginInfo = null;
+        LoginDetails loginDetails = null;
         Optional<LoginDetails> userInfo = loginRepo.findById(uid);
         if(userInfo.isPresent()) {
-            loginInfo = userInfo.get();
-            if (loginInfo.getPassword().equals(password) && loginInfo.getAccount_status().equals("Active")) {
-                loginInfo.setLast_login_date(Date.valueOf(LocalDate.now()));
-                loginRepo.save(loginInfo);
+            loginDetails = userInfo.get();
+            if (loginDetails.getPassword().equals(password) && loginDetails.getAccount_status().equals("Active")) {
+                loginDetails.setLast_login_date(Date.valueOf(LocalDate.now()));
+                loginRepo.save(loginDetails);
                 return true;
             }
         }
