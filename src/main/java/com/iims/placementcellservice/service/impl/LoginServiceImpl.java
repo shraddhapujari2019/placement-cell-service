@@ -1,16 +1,13 @@
 package com.iims.placementcellservice.service.impl;
 
-import com.iims.placementcellservice.model.LoginDetails;
-import com.iims.placementcellservice.service.LoginRepo;
+import com.iims.placementcellservice.entity.LoginDetails;
+import com.iims.placementcellservice.repository.LoginRepo;
 import com.iims.placementcellservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAmount;
 import java.util.Optional;
 
 @Service
