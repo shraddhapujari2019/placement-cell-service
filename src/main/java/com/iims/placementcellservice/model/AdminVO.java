@@ -1,13 +1,15 @@
 package com.iims.placementcellservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 @Data
-public class Admin {
+@JsonInclude
+public class AdminVO {
     @Id
     int admin_id;
     String title;
@@ -18,5 +20,8 @@ public class Admin {
     String mobile_number;
     String course;
     String college_name;
+
+    @JsonIgnore
+    String password;
 
 }

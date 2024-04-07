@@ -1,6 +1,6 @@
 package com.iims.placementcellservice.controller;
 
-import com.iims.placementcellservice.model.Admin;
+import com.iims.placementcellservice.model.AdminVO;
 import com.iims.placementcellservice.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class AdminController {
     @Autowired
     AdminServiceImpl adminService;
     @GetMapping("/create-admin")
-    public void createAdmin(@RequestBody Admin admin)
+    public void createAdmin(@RequestBody AdminVO admin)
     {
         adminService.createAdminUser(admin);
     }
