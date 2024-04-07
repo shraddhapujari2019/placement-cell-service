@@ -40,6 +40,7 @@ public class StudentServiceImpl implements StudentService {
         loginDetails.setLogin_id(student.getId());
         loginDetails.setPassword(studentVO.getPassword());
         loginDetails.set_admin(false);
+        loginDetails.setAccount_status("Active");
         loginDetails.setPassword_expiration_date(Date.valueOf(LocalDate.now().plus(180, ChronoUnit.DAYS)));
         loginDetails.setLast_password_reset(Date.valueOf(LocalDate.now()));
 
