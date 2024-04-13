@@ -1,7 +1,10 @@
 package com.iims.placementcellservice.service;
 
 import com.iims.placementcellservice.entity.LoginDetails;
+import com.iims.placementcellservice.model.LoginDto;
+import org.springframework.http.ResponseEntity;
 
 public interface LoginService {
-    public void saveUser(LoginDetails loginDetails);
+
+    ResponseEntity<String> login(LoginDto loginDto);
 }
