@@ -42,7 +42,7 @@ public class Student {
     @Column(name = "CURRENT_ADDRESS")
     private String currentAddress;
 
-    @Column(name = "PERMENENET_ADDRESS")
+    @Column(name = "PERMANENT_ADDRESS")
     private String permanentAddress;
 
     @Column(name = "COURSE")
