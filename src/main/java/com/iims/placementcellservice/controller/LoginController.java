@@ -1,8 +1,11 @@
 package com.iims.placementcellservice.controller;
 
+import com.iims.placementcellservice.model.LoginDto;
 import com.iims.placementcellservice.service.impl.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
@@ -14,25 +17,12 @@ public class LoginController {
     LoginServiceImpl loginService;
 
     @PostMapping("/login")
-    void validateLogin(@PathParam("userid") int userId, @PathParam("password") String password) {
-
+    ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
+        return loginService.login(loginDto);
     }
 
     @PostMapping("/admin-login")
-    void validateAdminLogin(@PathParam("userid") int userId, @PathParam("password") String password) {
-
-    }
-
-    @PostMapping("/login/reset")
-    void resetUserPassword(@PathParam("userid") int userId) {
-        // Get confidential details from user  and validate them. Redirect to password reset page
-
-    }
-
-    @PostMapping("/admin-login/reset")
-    void resetAdminPassword(@PathParam("userid") int userId) {
-        // Get confidential details from user  and validate them. Redirect to password reset page
-
-
+    ResponseEntity<String> adminLogin(@RequestBody LoginDto loginDto) {
+        return loginService.login(loginDto);
     }
 }

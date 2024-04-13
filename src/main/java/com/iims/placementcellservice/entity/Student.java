@@ -2,9 +2,7 @@ package com.iims.placementcellservice.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Data
@@ -13,6 +11,7 @@ public class Student {
 
     @Id
     @Column(name = "STUDENT_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "ROLL_NUMBER", nullable = false)
@@ -137,5 +136,8 @@ public class Student {
 
     @Column(name = "ROLE")
     private String role;
+
+    @Column(name = "USER_NAME")
+    private String username;
 
 }

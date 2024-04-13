@@ -1,7 +1,13 @@
 package com.iims.placementcellservice.service;
 
-import com.iims.placementcellservice.model.AdminVO;
+import com.iims.placementcellservice.model.AdminDto;
+import com.iims.placementcellservice.model.LoginDto;
+import com.iims.placementcellservice.model.ResetDto;
+import org.springframework.http.ResponseEntity;
 
 public interface AdminService {
-    void createAdminUser(AdminVO admin);
+
+    ResponseEntity<LoginDto> createAdminLoginUser(LoginDto loginDto);
+    ResponseEntity<String> createAdminProfile(AdminDto admin);
+    ResponseEntity<String> resetAdminPassword(ResetDto resetDto);
 }

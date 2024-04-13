@@ -3,19 +3,23 @@ package com.iims.placementcellservice.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity (name = "admin_info")
 @Data
 public class Admin {
     @Id
-    int admin_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long adminId;
     String title;
-    String first_name;
-    String middle_name;
-    String last_name;
+    String firstName;
+    String middleName;
+    String lastName;
     String email;
-    String mobile_number;
+    String mobileNumber;
     String course;
-    String college_name;
+    String collegeName;
+    String username;
 }

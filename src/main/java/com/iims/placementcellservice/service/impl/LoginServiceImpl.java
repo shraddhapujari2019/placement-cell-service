@@ -1,9 +1,12 @@
 package com.iims.placementcellservice.service.impl;
 
 import com.iims.placementcellservice.entity.LoginDetails;
+import com.iims.placementcellservice.model.LoginDto;
 import com.iims.placementcellservice.repository.LoginRepo;
 import com.iims.placementcellservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -16,22 +19,19 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     LoginRepo loginRepo;
 
-    public boolean validateLogin(int uid, String password){
+    public ResponseEntity<String> login(LoginDto loginDto){
         LoginDetails loginDetails = null;
-        Optional<LoginDetails> userInfo = loginRepo.findById(uid);
+        Optional<LoginDetails> userInfo = loginRepo.findById(loginDto.getUsername());
         if(userInfo.isPresent()) {
             loginDetails = userInfo.get();
-            if (loginDetails.getPassword().equals(password) && loginDetails.getAccount_status().equals("Active")) {
-                loginDetails.setLast_login_date(Date.valueOf(LocalDate.now()));
+            if (loginDetails.getPassword().equals(loginDto.getPassword()) && loginDetails.getAccountStatus().equals("Active")) {
+                loginDetails.setLastLoginDate(Date.valueOf(LocalDate.now()));
                 loginRepo.save(loginDetails);
-                return true;
+                return new ResponseEntity<>("Login Successful", HttpStatus.OK);
             }
         }
-        return false;
+        return new ResponseEntity<>("Login Failed", HttpStatus.UNAUTHORIZED);
     }
-    @Override
-    public void saveUser(LoginDetails loginDetails){
-        loginRepo.save(loginDetails);
-    }
+
 
 }

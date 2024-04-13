@@ -9,12 +9,12 @@ import java.sql.Date;
 @Data
 public class LoginDetails {
     @Id
-    long login_id;
+    String username;
     String password;
-    boolean is_admin;
-    Date last_login_date;
-    Date last_password_reset;
-    Date password_expiration_date;
-    String Account_status;
+    String isAdmin;
+    Date lastLoginDate;
+    Date lastPasswordReset;
+    Date passwordExpirationDate;
+    String accountStatus;
 }
 
