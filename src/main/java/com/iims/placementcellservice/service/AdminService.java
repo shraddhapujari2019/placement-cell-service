@@ -9,5 +9,9 @@ public interface AdminService {
 
     ResponseEntity<LoginDto> createAdminLoginUser(LoginDto loginDto);
     ResponseEntity<String> createAdminProfile(AdminDto admin);
+
+    ResponseEntity<String> updateAdminProfile(AdminDto admin);
+
+    ResponseEntity<AdminDto> getAdminProfile(String username);
     ResponseEntity<String> resetAdminPassword(ResetDto resetDto);
 }

@@ -19,7 +19,7 @@ public class Drive {
     @Column(name = "DRIVE_LOCATION")
     private String driveLocation;
     @Column(name = "OFFERED_CTC")
-    private String OfferedCtc;
+    private String offeredCtc;
     @Column(name = "SSC_MARKS")
     private long sscMarks;
     @Column(name = "HSC_MARKS")
@@ -68,11 +68,11 @@ public class Drive {
     }
 
     public String getOfferedCtc() {
-        return OfferedCtc;
+        return offeredCtc;
     }
 
     public void setOfferedCtc(String offeredCtc) {
-        OfferedCtc = offeredCtc;
+        this.offeredCtc = offeredCtc;
     }
 
     public long getSscMarks() {
