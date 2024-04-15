@@ -1,7 +1,9 @@
 package com.iims.placementcellservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iims.placementcellservice.entity.Admin;
 import com.iims.placementcellservice.entity.CompanyDetails;
+import com.iims.placementcellservice.model.AdminDto;
 import com.iims.placementcellservice.model.CompanyDetailsDto;
 import com.iims.placementcellservice.repository.CompanyDetailsRepo;
 import com.iims.placementcellservice.service.CompanyDetailsService;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyDetailsServiceImpl implements CompanyDetailsService {
@@ -30,6 +33,23 @@ public class CompanyDetailsServiceImpl implements CompanyDetailsService {
 
     }
 
+    @Override
+    public ResponseEntity<String> updateCompanyProfile(CompanyDetailsDto companyDetailsDto) {
+
+        Optional<CompanyDetails> companyDetails = companyDetailsRepo.findByCompanyId(companyDetailsDto.getCompanyId());
+        if(companyDetails.isPresent()) {
+            companyDetails.get().setCompanyName(companyDetailsDto.getCompanyName());
+            companyDetails.get().setRole(companyDetailsDto.getRole());
+            companyDetails.get().setCompanyInfo(companyDetailsDto.getCompanyInfo());
+            companyDetails.get().setCompanyWebsite(companyDetailsDto.getCompanyWebsite());
+            companyDetails.get().setSector(companyDetailsDto.getSector());
+            companyDetails.get().setJobLocation(companyDetailsDto.getJobLocation());
+            companyDetails.get().setOrgType(companyDetailsDto.getOrgType());
+            companyDetailsRepo.save(companyDetails.get());
+            return new ResponseEntity<>("Company details updated successfully", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Company details updated failed", HttpStatus.BAD_REQUEST);
+    }
     @Override
     public ResponseEntity<List<CompanyDetails>> getAllCompanies() {
         return new ResponseEntity<>(companyDetailsRepo.findAll(),HttpStatus.OK);
