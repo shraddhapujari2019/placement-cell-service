@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @Service
 public class AdminServiceImpl  implements AdminService {
@@ -54,6 +55,33 @@ public class AdminServiceImpl  implements AdminService {
         return new ResponseEntity<>("Admin profile creation failed", HttpStatus.BAD_REQUEST);
     }
 
+
+    @Override
+    public ResponseEntity<String> updateAdminProfile(AdminDto adminDto) {
+
+        Optional<Admin> admin = adminRepo.findByUsername(adminDto.getUsername());
+        if(admin.isPresent()) {
+            admin.get().setFirstName(adminDto.getFirstName());
+            admin.get().setMiddleName(adminDto.getMiddleName());
+            admin.get().setLastName(adminDto.getLastName());
+            admin.get().setTitle(adminDto.getTitle());
+            admin.get().setMobileNumber(adminDto.getMobileNumber());
+            admin.get().setEmail(adminDto.getEmail());
+            adminRepo.save(admin.get());
+            return new ResponseEntity<>("Admin profile updated successfully", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Admin profile updated failed", HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<AdminDto> getAdminProfile(String username) {
+        Optional<Admin> admin = adminRepo.findByUsername(username);
+        if(admin.isPresent()) {
+            AdminDto adminDto = mapper.convertValue(admin, AdminDto.class);
+            return new ResponseEntity<>(adminDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
     @Override
     public ResponseEntity<String> resetAdminPassword(ResetDto resetDto) {
         if(adminRepo.findByUsername(resetDto.getUsername()).isPresent() ) {
