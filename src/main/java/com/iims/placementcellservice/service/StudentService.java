@@ -11,9 +11,8 @@ import java.util.List;
 public interface StudentService {
 
     public List<Student> getStudents();
-
     ResponseEntity<String> createStudentProfile(StudentDto student);
     ResponseEntity<LoginDto> createStudentLoginUser(LoginDto loginDto);
-
+    ResponseEntity<String> updateStudentProfile(StudentDto student);
     ResponseEntity<String> resetStudentPassword(ResetDto resetDto);
 }

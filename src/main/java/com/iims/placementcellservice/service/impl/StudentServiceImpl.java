@@ -1,8 +1,10 @@
 package com.iims.placementcellservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iims.placementcellservice.entity.Admin;
 import com.iims.placementcellservice.entity.Student;
 import com.iims.placementcellservice.entity.LoginDetails;
+import com.iims.placementcellservice.model.AdminDto;
 import com.iims.placementcellservice.model.LoginDto;
 import com.iims.placementcellservice.model.ResetDto;
 import com.iims.placementcellservice.model.StudentDto;
@@ -19,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -61,6 +64,58 @@ public class StudentServiceImpl implements StudentService {
             return new ResponseEntity<>(loginDto, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<String> updateStudentProfile(StudentDto studentDto) {
+
+        Optional<Student> student = studentRepo.findByUsername(studentDto.getUsername());
+        if(student.isPresent()) {
+            student.get().setRollNumber(studentDto.getRollNumber());
+            student.get().setFirstName(studentDto.getFirstName());
+            student.get().setMiddleName(studentDto.getMiddleName());
+            student.get().setLastName(studentDto.getLastName());
+            student.get().setDateOfBirth(studentDto.getDateOfBirth());
+            student.get().setGender(studentDto.getGender());
+            student.get().setMobileNumber(studentDto.getMobileNumber());
+            student.get().setEmail(studentDto.getEmail());
+            student.get().setCurrentAddress(studentDto.getCurrentAddress());
+            student.get().setPermanentAddress(studentDto.getPermanentAddress());
+            student.get().setCourse(studentDto.getCourse());
+            student.get().setAdmissionYear(studentDto.getAdmissionYear());
+            student.get().setPassingYear(studentDto.getPassingYear());
+            student.get().setSemester(studentDto.getSemester());
+            student.get().setDivision(studentDto.getDivision());
+            student.get().setCollegeName(studentDto.getCollegeName());
+            student.get().setSscPassingYear(studentDto.getSscPassingYear());
+            student.get().setSscMarks(studentDto.getSscMarks());
+            student.get().setHscPassingYear(studentDto.getHscPassingYear());
+            student.get().setHscMarks(studentDto.getHscMarks());
+            student.get().setHighestQualificationName(studentDto.getHighestQualificationName());
+            student.get().setHighestQualificationPassingYear(studentDto.getHighestQualificationPassingYear());
+            student.get().setHighestQualificationMarks(studentDto.getHighestQualificationMarks());
+            student.get().setOtherGraduationName(studentDto.getOtherGraduationName());
+            student.get().setOtherGraduationPassingYear(studentDto.getOtherGraduationPassingYear());
+            student.get().setOtherGraduationMarks(studentDto.getOtherGraduationMarks());
+            student.get().setGap(studentDto.getGap());
+            student.get().setGapStartDate(studentDto.getGapStartDate());
+            student.get().setGapEndDate(studentDto.getGapEndDate());
+            student.get().setSem1Marks(studentDto.getSem1Marks());
+            student.get().setSem2Marks(studentDto.getSem2Marks());
+            student.get().setSem3Marks(studentDto.getSem3Marks());
+            student.get().setSem4Marks(studentDto.getSem4Marks());
+            student.get().setActiveBacklog(studentDto.getActiveBacklog());
+            student.get().setTotalBacklog(studentDto.getTotalBacklog());
+            student.get().setExperience(studentDto.getExperience());
+            student.get().setExperienceStartDate(studentDto.getExperienceStartDate());
+            student.get().setExperienceEndDate(studentDto.getExperienceEndDate());
+            student.get().setCompanyName(studentDto.getCompanyName());
+            student.get().setPosition(studentDto.getPosition());
+            student.get().setRole(studentDto.getRole());
+            studentRepo.save(student.get());
+            return new ResponseEntity<>("Student profile updated successfully", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Student profile update failed", HttpStatus.BAD_REQUEST);
     }
 
     @Override

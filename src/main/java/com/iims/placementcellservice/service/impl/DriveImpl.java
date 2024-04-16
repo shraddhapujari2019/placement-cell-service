@@ -50,9 +50,9 @@ public class DriveImpl implements DriveService {
             drive.get().setHistoricalBacklogStatus(driveDto.getHistoricalBacklogStatus());
             drive.get().setMaxHistBacklogAllowed(driveDto.getMaxHistBacklogAllowed());
             driveRepo.save(drive.get());
-            return new ResponseEntity<>("Company details updated successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Drive details updated successfully", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Company details updated failed", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Drive details update failed", HttpStatus.BAD_REQUEST);
     }
     @Override
     public ResponseEntity<List<Drive>> getAllDrives() {

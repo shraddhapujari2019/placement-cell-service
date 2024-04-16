@@ -34,6 +34,12 @@ public class StudentController {
         return studentService.createStudentProfile(studentDto);
     }
 
+    @PutMapping ("/update-student-profile")
+    public ResponseEntity<String> updateStudentProfile(@RequestBody StudentDto studentDto)
+    {
+        return studentService.updateStudentProfile(studentDto);
+    }
+
     @PostMapping ("/reset")
     public ResponseEntity<String> resetStudentPassword(@RequestBody ResetDto resetDto)
     {

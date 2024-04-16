@@ -21,7 +21,7 @@ public class CompanyController {
        return companyDetailsService.createCompanyDetails(companyDetailsDto);
     }
 
-    @PutMapping ("/update-company-details")
+    @PutMapping ("/update")
     public ResponseEntity<String> updateCompanyProfile(@RequestBody CompanyDetailsDto companyDetailsDto)
     {
         return companyDetailsService.updateCompanyProfile(companyDetailsDto);

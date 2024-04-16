@@ -46,7 +46,7 @@ public class CompanyDetailsServiceImpl implements CompanyDetailsService {
             companyDetailsRepo.save(companyDetails.get());
             return new ResponseEntity<>("Company details updated successfully", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Company details updated failed", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Company details update failed", HttpStatus.BAD_REQUEST);
     }
     @Override
     public ResponseEntity<List<CompanyDetails>> getAllCompanies() {
