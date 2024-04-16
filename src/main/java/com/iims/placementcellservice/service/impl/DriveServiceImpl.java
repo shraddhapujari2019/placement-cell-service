@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DriveImpl implements DriveService {
+public class DriveServiceImpl implements DriveService {
     @Autowired
     DriveRepo driveRepo;
 
