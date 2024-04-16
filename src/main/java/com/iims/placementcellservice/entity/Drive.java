@@ -29,7 +29,7 @@ public class Drive {
     @Column(name = "ACTIVE_BACKLOG_STATUS")
     private String activeBacklogStatus;
     @Column(name = "MAX_ACTIVE_BACKLOG_ALLOWED")
-    private long maxActiveBacklogStatus;
+    private long maxActiveBacklogAllowed;
     @Column(name = "HISTORICAL_BACKLOG_STATUS")
     private String historicalBacklogStatus;
     @Column(name = "MAX_HIST_BACKLOG_ALLOWED")
@@ -107,12 +107,12 @@ public class Drive {
         this.activeBacklogStatus = activeBacklogStatus;
     }
 
-    public long getMaxActiveBacklogStatus() {
-        return maxActiveBacklogStatus;
+    public long getMaxActiveBacklogAllowed() {
+        return maxActiveBacklogAllowed;
     }
 
-    public void setMaxActiveBacklogStatus(long maxActiveBacklogStatus) {
-        this.maxActiveBacklogStatus = maxActiveBacklogStatus;
+    public void setMaxActiveBacklogAllowed(long maxActiveBacklogAllowed) {
+        this.maxActiveBacklogAllowed = maxActiveBacklogAllowed;
     }
 
     public String getHistoricalBacklogStatus() {
