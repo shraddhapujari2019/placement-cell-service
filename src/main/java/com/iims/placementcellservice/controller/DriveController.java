@@ -1,7 +1,6 @@
 package com.iims.placementcellservice.controller;
 
 import com.iims.placementcellservice.entity.Drive;
-import com.iims.placementcellservice.model.CompanyDetailsDto;
 import com.iims.placementcellservice.model.DriveDto;
 import com.iims.placementcellservice.service.DriveService;
 import org.springframework.beans.factory.annotation.Autowired;

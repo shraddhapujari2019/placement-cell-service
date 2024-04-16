@@ -1,9 +1,7 @@
 package com.iims.placementcellservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iims.placementcellservice.entity.CompanyDetails;
 import com.iims.placementcellservice.entity.Drive;
-import com.iims.placementcellservice.model.CompanyDetailsDto;
 import com.iims.placementcellservice.model.DriveDto;
 import com.iims.placementcellservice.repository.DriveRepo;
 import com.iims.placementcellservice.service.DriveService;
