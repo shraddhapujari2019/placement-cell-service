@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -33,8 +34,10 @@ public class StudentServiceImpl implements StudentService {
     LoginRepo loginRepo;
 
     @Override
-    public List<Student> getStudents() {
-       return studentRepo.findAll();
+    public ResponseEntity<List<StudentDto>> getStudents() {
+       return new ResponseEntity(studentRepo.findAll().stream()
+               .map(student->mapper.convertValue(student,StudentDto.class))
+               .collect(Collectors.toList()), HttpStatus.OK);
 
     }
 
