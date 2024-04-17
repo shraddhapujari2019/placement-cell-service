@@ -70,7 +70,7 @@ public class AdminServiceImpl  implements AdminService {
             adminRepo.save(admin.get());
             return new ResponseEntity<>("Admin profile updated successfully", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Admin profile updated failed", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Admin profile update failed", HttpStatus.BAD_REQUEST);
     }
 
     @Override

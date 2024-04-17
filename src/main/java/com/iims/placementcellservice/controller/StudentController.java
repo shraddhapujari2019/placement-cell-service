@@ -23,6 +23,12 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    @GetMapping ("/student-profile")
+    public ResponseEntity<StudentDto> getStudentProfile(@RequestParam String username)
+    {
+        return studentService.getStudentProfile(username);
+    }
+
     @PostMapping("/create-student")
     public ResponseEntity<LoginDto> createStudent(@RequestBody LoginDto loginDto)
     {
@@ -32,6 +38,12 @@ public class StudentController {
     public ResponseEntity<String> createStudentProfile(@RequestBody StudentDto studentDto)
     {
         return studentService.createStudentProfile(studentDto);
+    }
+
+    @PutMapping ("/update-student-profile")
+    public ResponseEntity<String> updateStudentProfile(@RequestBody StudentDto studentDto)
+    {
+        return studentService.updateStudentProfile(studentDto);
     }
 
     @PostMapping ("/reset")

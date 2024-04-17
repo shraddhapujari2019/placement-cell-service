@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -37,6 +38,15 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    public ResponseEntity<StudentDto> getStudentProfile(String username){
+        Optional<Student> student =  studentRepo.findByUsername(username);
+
+        if(student.isPresent()) {
+            StudentDto studentDto = mapper.convertValue(student, StudentDto.class);
+            return new ResponseEntity<>(studentDto, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
     @Override
     public ResponseEntity<String> createStudentProfile(StudentDto studentDto) {
         if(studentRepo.findByUsername(studentDto.getUsername()).isEmpty()) {
@@ -76,5 +86,30 @@ public class StudentServiceImpl implements StudentService {
             return new ResponseEntity<>("Security details do not match", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("Invalid user", HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<String> updateStudentProfile(StudentDto studentDto){
+        Optional<Student> student = studentRepo.findByUsername(studentDto.getUsername());
+         if(student.isPresent()){
+             student.get().setFirstName(studentDto.getFirstName());
+             student.get().setMiddleName(studentDto.getMiddleName());
+             student.get().setLastName(studentDto.getLastName());
+             student.get().setMobileNumber(studentDto.getMobileNumber());
+             student.get().setEmail(studentDto.getEmail());
+//             student.get().setActiveBacklog(studentDto.getActiveBacklog());
+//             student.get().setCurrentAddress(studentDto.getCurrentAddress());
+//             student.get().setPermanentAddress(studentDto.getPermanentAddress());
+//             student.get().setCompanyName(studentDto.getCompanyName());
+//             student.get().setExperience(studentDto.getExperience());
+//             student.get().setExperienceStartDate(studentDto.getExperienceStartDate());
+//             student.get().setExperienceEndDate(studentDto.getExperienceEndDate());
+//             student.get().setTotalBacklog(studentDto.getTotalBacklog());
+
+           studentRepo.save(student.get());
+             return new ResponseEntity<>("Student profile updated successfully", HttpStatus.OK);
+         }
+        return new ResponseEntity<>("Student profile update failed", HttpStatus.BAD_REQUEST);
+
     }
 }

@@ -23,7 +23,7 @@ public class AdminController {
     }
 
     @GetMapping ("/admin-profile")
-    public ResponseEntity<AdminDto> createAdminProfile(@RequestParam String username)
+    public ResponseEntity<AdminDto> getAdminProfile(@RequestParam String username)
     {
         return adminService.getAdminProfile(username);
     }

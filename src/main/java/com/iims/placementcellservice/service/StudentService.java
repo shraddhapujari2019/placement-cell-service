@@ -16,4 +16,8 @@ public interface StudentService {
     ResponseEntity<LoginDto> createStudentLoginUser(LoginDto loginDto);
 
     ResponseEntity<String> resetStudentPassword(ResetDto resetDto);
+
+    ResponseEntity<String> updateStudentProfile(StudentDto studentDto);
+
+    ResponseEntity<StudentDto> getStudentProfile(String username);
 }
