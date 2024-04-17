@@ -19,7 +19,7 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping
-    public List<Student> getStudents(){
+    public ResponseEntity<List<StudentDto>> getStudents(){
         return studentService.getStudents();
     }
 
