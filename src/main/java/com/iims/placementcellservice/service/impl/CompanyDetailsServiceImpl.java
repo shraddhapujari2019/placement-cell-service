@@ -22,10 +22,10 @@ public class CompanyDetailsServiceImpl implements CompanyDetailsService {
     ObjectMapper mapper;
     @Override
     public ResponseEntity<CompanyDetailsDto> createCompanyDetails(CompanyDetailsDto companyDetailsDto) {
-        if(companyDetailsRepo.findById(companyDetailsDto.getCompanyId()).isEmpty()) {
+        if(companyDetailsDto!=null) {
             CompanyDetails companyDetails = mapper.convertValue(companyDetailsDto, CompanyDetails.class);
-            companyDetailsRepo.save(companyDetails);
-            return new ResponseEntity<>(companyDetailsDto, HttpStatus.OK);
+            companyDetails = companyDetailsRepo.save(companyDetails);
+            return new ResponseEntity<>(mapper.convertValue(companyDetails, CompanyDetailsDto.class), HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }

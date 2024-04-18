@@ -9,4 +9,5 @@ import java.util.List;
 public interface DriveService {
     ResponseEntity<DriveDto> createDriveDetails(DriveDto driveDto);
     ResponseEntity<List<Drive>> getAllDrives();
+    ResponseEntity<String> updateDriveDetails(DriveDto driveDto);
 }

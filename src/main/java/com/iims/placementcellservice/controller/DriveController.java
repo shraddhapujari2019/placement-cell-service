@@ -20,7 +20,12 @@ public class DriveController {
         return driveService.createDriveDetails(driveDto);
     }
 
-    @GetMapping
+    @PutMapping("/update-drive")
+    public ResponseEntity<String> updateDriveDetails(@RequestBody DriveDto driveDto){
+        return driveService.updateDriveDetails(driveDto);
+    }
+
+    @GetMapping("/list")
     public ResponseEntity<List<Drive>> getDriveDetails(){
         return driveService.getAllDrives();
     }
