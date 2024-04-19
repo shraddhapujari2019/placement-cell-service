@@ -25,7 +25,7 @@ public class CompanyController {
         return companyDetailsService.updateCompanyDetails(companyDetailsDto);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<CompanyDetailsDto>> getCompanyDetails(){
         return companyDetailsService.getAllCompanies();
     }

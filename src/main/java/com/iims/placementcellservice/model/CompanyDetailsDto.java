@@ -2,8 +2,6 @@ package com.iims.placementcellservice.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-
 @Data
 public class CompanyDetailsDto {
     long companyId;
