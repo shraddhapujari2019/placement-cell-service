@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(originPatterns = {"*"})
 @RestController
 @RequestMapping("/company")
 public class CompanyController {
