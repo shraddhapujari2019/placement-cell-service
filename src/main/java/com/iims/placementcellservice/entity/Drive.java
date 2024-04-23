@@ -16,7 +16,7 @@ public class Drive {
     @Column(name = "COMPANY_ID")
     private long companyId;
     @Column(name = "DRIVE_DATE")
-    private Date driveDate;
+    private String driveDate;
     @Column(name = "DRIVE_LOCATION")
     private String driveLocation;
     @Column(name = "OFFERED_CTC")
@@ -30,7 +30,7 @@ public class Drive {
     @Column(name = "ACTIVE_BACKLOG_STATUS")
     private String activeBacklogStatus;
     @Column(name = "MAX_ACTIVE_BACKLOG_ALLOWED")
-    private long maxActiveBacklogStatus;
+    private long maxActiveBacklogAllowed;
     @Column(name = "HISTORICAL_BACKLOG_STATUS")
     private String historicalBacklogStatus;
     @Column(name = "MAX_HIST_BACKLOG_ALLOWED")

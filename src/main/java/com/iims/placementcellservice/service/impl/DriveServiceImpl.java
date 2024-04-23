@@ -47,15 +47,17 @@ public class DriveServiceImpl implements DriveService {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             driveDetails.get().setCompanyId(driveDto.getCompanyId());
             try {
-                driveDetails.get().setDriveDate(sdf.parse(driveDto.getDriveDate()));
+                driveDetails.get().setDriveDate(String.valueOf(sdf.parse(driveDto.getDriveDate())));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
             driveDetails.get().setDriveLocation(driveDto.getDriveLocation());
             driveDetails.get().setGraduationMarks(driveDto.getGraduationMarks());
             driveDetails.get().setHscMarks(driveDto.getHscMarks());
-            driveDetails.get().setHistoricalBacklogStatus(driveDto.getHistoricalBacklogStatus());
             driveDetails.get().setActiveBacklogStatus(driveDto.getActiveBacklogStatus());
+            driveDetails.get().setMaxActiveBacklogAllowed(driveDto.getMaxActiveBacklogAllowed());
+            driveDetails.get().setHistoricalBacklogStatus(driveDto.getHistoricalBacklogStatus());
+            driveDetails.get().setMaxHistBacklogAllowed(driveDto.getMaxHistBacklogAllowed());
             driveDetails.get().setOfferedCtc(driveDto.getOfferedCtc());
             driveDetails.get().setSscMarks(driveDto.getSscMarks());
             driveRepo.save(driveDetails.get());
