@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
 @CrossOrigin(originPatterns = {"*"})
 
 @RestController()
@@ -21,11 +20,11 @@ public class LoginController {
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
-        return loginService.login(loginDto);
+        return loginService.userLogin(loginDto);
     }
 
     @PostMapping("/admin-login")
     ResponseEntity<String> adminLogin(@RequestBody LoginDto loginDto) {
-        return loginService.login(loginDto);
+        return loginService.adminLogin(loginDto);
     }
 }

@@ -1,14 +1,13 @@
 package com.iims.placementcellservice.controller;
 
-import com.iims.placementcellservice.model.AdminDto;
-import com.iims.placementcellservice.model.LoginDto;
-import com.iims.placementcellservice.model.ResetDto;
+import com.iims.placementcellservice.model.*;
+import com.iims.placementcellservice.service.PlacementService;
 import com.iims.placementcellservice.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -16,6 +15,9 @@ public class AdminController {
 
     @Autowired
     AdminServiceImpl adminService;
+
+    @Autowired
+    PlacementService placementService;
     @PostMapping ("/create-admin")
     public ResponseEntity<LoginDto> createAdmin(@RequestBody LoginDto loginDto)
     {
@@ -43,4 +45,15 @@ public class AdminController {
     {
         return adminService.resetAdminPassword(resetDto);
     }
+
+    @PostMapping("/create-placement-record")
+    ResponseEntity<String> createPlacementRecord(@RequestBody PlacementStatusDto placementStatusDto){
+        return placementService.createPlacementRecord(placementStatusDto);
+    }
+
+    @GetMapping("/placed-students")
+    public ResponseEntity<List<StudentDto>> getPlacedStudents(){
+        return adminService.getPlacedStudents();
+    }
+
 }

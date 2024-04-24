@@ -6,5 +6,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface LoginService {
 
-    ResponseEntity<String> login(LoginDto loginDto);
+    ResponseEntity<String> userLogin(LoginDto loginDto);
+    ResponseEntity<String> adminLogin(LoginDto loginDto);
 }
