@@ -6,8 +6,10 @@ import com.iims.placementcellservice.model.AdminDto;
 import com.iims.placementcellservice.entity.LoginDetails;
 import com.iims.placementcellservice.model.LoginDto;
 import com.iims.placementcellservice.model.ResetDto;
+import com.iims.placementcellservice.model.StudentDto;
 import com.iims.placementcellservice.repository.AdminRepo;
 import com.iims.placementcellservice.repository.LoginRepo;
+import com.iims.placementcellservice.repository.StudentRepo;
 import com.iims.placementcellservice.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,9 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminServiceImpl  implements AdminService {
@@ -25,9 +29,12 @@ public class AdminServiceImpl  implements AdminService {
     @Autowired
     private AdminRepo adminRepo;
     @Autowired
-    private ObjectMapper mapper;
-    @Autowired
     private LoginRepo loginRepo;
+    @Autowired
+    private StudentRepo studentRepo;
+
+    @Autowired
+    private ObjectMapper mapper;
 
     public ResponseEntity<LoginDto> createAdminLoginUser(LoginDto loginDto) {
 
@@ -94,5 +101,12 @@ public class AdminServiceImpl  implements AdminService {
             return new ResponseEntity<>("Security details do not match", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>("Invalid user", HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<List<StudentDto>> getPlacedStudents() {
+        return new ResponseEntity<>(studentRepo.getPlacedStudents().stream()
+                .map(student->mapper.convertValue(student,StudentDto.class))
+                .collect(Collectors.toList()),HttpStatus.OK);
     }
 }

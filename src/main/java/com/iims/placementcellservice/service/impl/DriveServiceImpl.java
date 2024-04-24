@@ -47,7 +47,7 @@ public class DriveServiceImpl implements DriveService {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             driveDetails.get().setCompanyId(driveDto.getCompanyId());
             try {
-                driveDetails.get().setDriveDate(String.valueOf(sdf.parse(driveDto.getDriveDate())));
+                driveDetails.get().setDriveDate(sdf.parse(driveDto.getDriveDate()));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }

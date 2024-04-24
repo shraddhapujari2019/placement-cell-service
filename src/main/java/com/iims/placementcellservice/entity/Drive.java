@@ -16,7 +16,7 @@ public class Drive {
     @Column(name = "COMPANY_ID")
     private long companyId;
     @Column(name = "DRIVE_DATE")
-    private String driveDate;
+    private Date driveDate;
     @Column(name = "DRIVE_LOCATION")
     private String driveLocation;
     @Column(name = "OFFERED_CTC")
