@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class AdminDto {
-    String adminId;
+    int adminId;
     String title;
     String firstName;
     String middleName;

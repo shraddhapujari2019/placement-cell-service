@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long adminId;
+    int adminId;
     String title;
     String firstName;
     String middleName;

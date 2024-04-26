@@ -54,10 +54,10 @@ public class DriveServiceImpl implements DriveService {
             driveDetails.get().setDriveLocation(driveDto.getDriveLocation());
             driveDetails.get().setGraduationMarks(driveDto.getGraduationMarks());
             driveDetails.get().setHscMarks(driveDto.getHscMarks());
-            driveDetails.get().setActiveBacklogStatus(driveDto.getActiveBacklogStatus());
+            driveDetails.get().setIsActiveBacklogAllowed(driveDto.getIsActiveBacklogAllowed());
             driveDetails.get().setMaxActiveBacklogAllowed(driveDto.getMaxActiveBacklogAllowed());
-            driveDetails.get().setHistoricalBacklogStatus(driveDto.getHistoricalBacklogStatus());
-            driveDetails.get().setMaxHistBacklogAllowed(driveDto.getMaxHistBacklogAllowed());
+            driveDetails.get().setIsTotalBacklogAllowed(driveDto.getIsTotalBacklogAllowed());
+            driveDetails.get().setMaxTotalBacklogAllowed(driveDto.getMaxTotalBacklogAllowed());
             driveDetails.get().setOfferedCtc(driveDto.getOfferedCtc());
             driveDetails.get().setSscMarks(driveDto.getSscMarks());
             driveRepo.save(driveDetails.get());

@@ -12,9 +12,9 @@ public class Drive {
     @Id
     @Column(name = "DRIVE_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long driveId;
+    private int driveId;
     @Column(name = "COMPANY_ID")
-    private long companyId;
+    private int companyId;
     @Column(name = "DRIVE_DATE")
     private Date driveDate;
     @Column(name = "DRIVE_LOCATION")
@@ -22,17 +22,17 @@ public class Drive {
     @Column(name = "OFFERED_CTC")
     private String offeredCtc;
     @Column(name = "SSC_MARKS")
-    private long sscMarks;
+    private float sscMarks;
     @Column(name = "HSC_MARKS")
-    private long hscMarks;
+    private float hscMarks;
     @Column(name = "GRADUATION_MARKS")
-    private long graduationMarks;
-    @Column(name = "ACTIVE_BACKLOG_STATUS")
-    private String activeBacklogStatus;
+    private float graduationMarks;
+    @Column(name = "IS_ACTIVE_BACKLOG_ALLOWED")
+    private String isActiveBacklogAllowed;
     @Column(name = "MAX_ACTIVE_BACKLOG_ALLOWED")
-    private long maxActiveBacklogAllowed;
-    @Column(name = "HISTORICAL_BACKLOG_STATUS")
-    private String historicalBacklogStatus;
-    @Column(name = "MAX_HIST_BACKLOG_ALLOWED")
-    private long maxHistBacklogAllowed;
+    private int maxActiveBacklogAllowed;
+    @Column(name = "IS_TOTAL_BACKLOG_ALLOWED")
+    private String isTotalBacklogAllowed;
+    @Column(name = "MAX_TOTAL_BACKLOG_ALLOWED")
+    private int maxTotalBacklogAllowed;
 }

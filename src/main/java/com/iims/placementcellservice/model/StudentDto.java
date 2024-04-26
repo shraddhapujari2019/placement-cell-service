@@ -2,12 +2,12 @@ package com.iims.placementcellservice.model;
 
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Data
 public class StudentDto {
 
-    private Long id;
+    private int id;
 
     private String rollNumber;
 
@@ -17,7 +17,7 @@ public class StudentDto {
 
     private String lastName;
 
-    private Timestamp dateOfBirth;
+    private Date dateOfBirth;
 
     private String gender;
 
@@ -25,104 +25,74 @@ public class StudentDto {
 
     private String email;
 
-    
     private String currentAddress;
 
-    
     private String permanentAddress;
 
-    
     private String course;
 
-    
     private String admissionYear;
 
-    
     private String passingYear;
 
-    
-    private String semester;
+    private int semester;
 
-    
     private String division;
 
-    
     private String collegeName;
 
-    
     private String sscPassingYear;
 
-    
-    private String sscMarks;
+    private float sscMarks;
 
-    
     private String hscPassingYear;
 
-    
-    private String hscMarks;
+    private float hscMarks;
 
-    
     private String highestQualificationName;
 
-    
     private String highestQualificationPassingYear;
 
-    
-    private String highestQualificationMarks;
+    private float highestQualificationMarks;
 
-    
     private String otherGraduationName;
 
-    
     private String otherGraduationPassingYear;
 
-    
-    private String otherGraduationMarks;
+    private float otherGraduationMarks;
 
-    
     private String gap;
 
-    
-    private Timestamp gapStartDate;
+    private Date gapStartDate;
 
-    
-    private Timestamp gapEndDate;
+    private Date gapEndDate;
 
-    
-    private Integer sem1Marks;
+    private float sem1Sgpa;
 
-    
-    private Integer sem2Marks;
+    private float sem2Sgpa;
 
-    
-    private Integer sem3Marks;
+    private float sem3Sgpa;
 
-    
-    private Integer sem4Marks;
+    private float sem4Sgpa;
 
-    
+    private float aggCgpa;
+
     private Integer activeBacklog;
 
-    
     private Integer totalBacklog;
 
-    
     private String experience;
 
-    
-    private Timestamp experienceStartDate;
+    private Date experienceStartDate;
 
-    
-    private Timestamp experienceEndDate;
+    private Date experienceEndDate;
 
-    
     private String companyName;
 
-    
     private String position;
 
     private String role;
 
-    private  String username;
+    private String username;
 
 }
