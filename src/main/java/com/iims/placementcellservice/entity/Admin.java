@@ -21,5 +21,5 @@ public class Admin {
     String mobileNumber;
     String course;
     String collegeName;
-    String username;
+    String userName;
 }

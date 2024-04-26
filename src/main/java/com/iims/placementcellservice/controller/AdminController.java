@@ -1,7 +1,6 @@
 package com.iims.placementcellservice.controller;
 
 import com.iims.placementcellservice.model.*;
-import com.iims.placementcellservice.service.PlacementService;
 import com.iims.placementcellservice.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +15,6 @@ public class AdminController {
     @Autowired
     AdminServiceImpl adminService;
 
-    @Autowired
-    PlacementService placementService;
     @PostMapping ("/create-admin")
     public ResponseEntity<LoginDto> createAdmin(@RequestBody LoginDto loginDto)
     {
@@ -25,9 +22,9 @@ public class AdminController {
     }
 
     @GetMapping ("/admin-profile")
-    public ResponseEntity<AdminDto> getAdminProfile(@RequestParam String username)
+    public ResponseEntity<AdminDto> getAdminProfile(@RequestParam String userName)
     {
-        return adminService.getAdminProfile(username);
+        return adminService.getAdminProfile(userName);
     }
     @PostMapping ("/create-admin-profile")
     public ResponseEntity<String> createAdminProfile(@RequestBody AdminDto adminDto)
@@ -46,10 +43,10 @@ public class AdminController {
         return adminService.resetAdminPassword(resetDto);
     }
 
-    @PostMapping("/create-placement-record")
-    ResponseEntity<String> createPlacementRecord(@RequestBody PlacementStatusDto placementStatusDto){
-        return placementService.createPlacementRecord(placementStatusDto);
-    }
+//    @PostMapping("/create-placement-record")
+//    ResponseEntity<String> createPlacementRecord(@RequestBody PlacementStatusDto placementStatusDto){
+//        return placementService.createPlacementRecord(placementStatusDto);
+//    }
 
     @GetMapping("/placed-students")
     public ResponseEntity<List<StudentDto>> getPlacedStudents(){

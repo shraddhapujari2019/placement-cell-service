@@ -15,7 +15,7 @@ public interface AdminService {
 
     ResponseEntity<String> updateAdminProfile(AdminDto admin);
 
-    ResponseEntity<AdminDto> getAdminProfile(String username);
+    ResponseEntity<AdminDto> getAdminProfile(String userName);
     ResponseEntity<String> resetAdminPassword(ResetDto resetDto);
 
     ResponseEntity<List<StudentDto>> getPlacedStudents();

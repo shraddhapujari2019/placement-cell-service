@@ -41,8 +41,8 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
-    public ResponseEntity<StudentDto> getStudentProfile(String username){
-        Optional<Student> student =  studentRepo.findByUsername(username);
+    public ResponseEntity<StudentDto> getStudentProfile(String userName){
+        Optional<Student> student =  studentRepo.findByUserName(userName);
 
         if(student.isPresent()) {
             StudentDto studentDto = mapper.convertValue(student, StudentDto.class);
@@ -52,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
     }
     @Override
     public ResponseEntity<String> createStudentProfile(StudentDto studentDto) {
-        if(studentRepo.findByUsername(studentDto.getUsername()).isEmpty()) {
+        if(studentRepo.findByUserName(studentDto.getUserName()).isEmpty()) {
             Student student = mapper.convertValue(studentDto, Student.class);
             studentRepo.save(student);
             return new ResponseEntity<>("Student profile created successfully", HttpStatus.OK);
@@ -62,9 +62,9 @@ public class StudentServiceImpl implements StudentService {
 
     public ResponseEntity<LoginDto> createStudentLoginUser(LoginDto loginDto) {
 
-        if(loginRepo.findById(loginDto.getUsername()).isEmpty()) {
+        if(loginRepo.findById(loginDto.getUserName()).isEmpty()) {
             LoginDetails loginDetails = new LoginDetails();
-            loginDetails.setUsername(loginDto.getUsername());
+            loginDetails.setUserName(loginDto.getUserName());
             loginDetails.setPassword(loginDto.getPassword());
             loginDetails.setIsAdmin("N");
             loginDetails.setAccountStatus("Active");
@@ -78,10 +78,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseEntity<String> resetStudentPassword(ResetDto resetDto) {
-        if(studentRepo.findByUsername(resetDto.getUsername()).isPresent() ) {
+        if(studentRepo.findByUserName(resetDto.getUserName()).isPresent() ) {
             SimpleDateFormat df = new SimpleDateFormat("MMdd");
-            if(df.format(studentRepo.findByUsername(resetDto.getUsername()).get().getDateOfBirth()).equals(resetDto.getValidationString())) {
-                LoginDetails loginDetails = loginRepo.findById(resetDto.getUsername()).get();
+            if(df.format(studentRepo.findByUserName(resetDto.getUserName()).get().getDateOfBirth()).equals(resetDto.getValidationString())) {
+                LoginDetails loginDetails = loginRepo.findById(resetDto.getUserName()).get();
                 loginDetails.setPassword(resetDto.getNewPassword());
                 loginRepo.save(loginDetails);
                 return new ResponseEntity<>("Password reset successfully", HttpStatus.OK);
@@ -93,7 +93,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseEntity<String> updateStudentProfile(StudentDto studentDto){
-        Optional<Student> student = studentRepo.findByUsername(studentDto.getUsername());
+        Optional<Student> student = studentRepo.findByUserName(studentDto.getUserName());
          if(student.isPresent()){
              student.get().setFirstName(studentDto.getFirstName());
              student.get().setMiddleName(studentDto.getMiddleName());

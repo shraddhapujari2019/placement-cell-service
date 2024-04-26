@@ -38,9 +38,9 @@ public class AdminServiceImpl  implements AdminService {
 
     public ResponseEntity<LoginDto> createAdminLoginUser(LoginDto loginDto) {
 
-        if(loginRepo.findById(loginDto.getUsername()).isEmpty()) {
+        if(loginRepo.findById(loginDto.getUserName()).isEmpty()) {
             LoginDetails loginDetails = new LoginDetails();
-            loginDetails.setUsername(loginDto.getUsername());
+            loginDetails.setUserName(loginDto.getUserName());
             loginDetails.setPassword(loginDto.getPassword());
             loginDetails.setIsAdmin("Y");
             loginDetails.setAccountStatus("Active");
@@ -54,7 +54,7 @@ public class AdminServiceImpl  implements AdminService {
 
     @Override
     public ResponseEntity<String> createAdminProfile(AdminDto adminDto) {
-        if(adminRepo.findByUsername(adminDto.getUsername()).isEmpty()) {
+        if(adminRepo.findByUserName(adminDto.getUserName()).isEmpty()) {
             Admin admin = mapper.convertValue(adminDto, Admin.class);
             adminRepo.save(admin);
             return new ResponseEntity<>("Admin profile created successfully", HttpStatus.OK);
@@ -66,7 +66,7 @@ public class AdminServiceImpl  implements AdminService {
     @Override
     public ResponseEntity<String> updateAdminProfile(AdminDto adminDto) {
 
-        Optional<Admin> admin = adminRepo.findByUsername(adminDto.getUsername());
+        Optional<Admin> admin = adminRepo.findByUserName(adminDto.getUserName());
         if(admin.isPresent()) {
             admin.get().setFirstName(adminDto.getFirstName());
             admin.get().setMiddleName(adminDto.getMiddleName());
@@ -81,8 +81,8 @@ public class AdminServiceImpl  implements AdminService {
     }
 
     @Override
-    public ResponseEntity<AdminDto> getAdminProfile(String username) {
-        Optional<Admin> admin = adminRepo.findByUsername(username);
+    public ResponseEntity<AdminDto> getAdminProfile(String userName) {
+        Optional<Admin> admin = adminRepo.findByUserName(userName);
         if(admin.isPresent()) {
             AdminDto adminDto = mapper.convertValue(admin, AdminDto.class);
             return new ResponseEntity<>(adminDto, HttpStatus.OK);
@@ -91,9 +91,9 @@ public class AdminServiceImpl  implements AdminService {
     }
     @Override
     public ResponseEntity<String> resetAdminPassword(ResetDto resetDto) {
-        if(adminRepo.findByUsername(resetDto.getUsername()).isPresent() ) {
-            if(adminRepo.findByUsername(resetDto.getUsername()).get().getMobileNumber().equals(resetDto.getValidationString())) {
-                LoginDetails loginDetails = loginRepo.findById(resetDto.getUsername()).get();
+        if(adminRepo.findByUserName(resetDto.getUserName()).isPresent() ) {
+            if(adminRepo.findByUserName(resetDto.getUserName()).get().getMobileNumber().equals(resetDto.getValidationString())) {
+                LoginDetails loginDetails = loginRepo.findById(resetDto.getUserName()).get();
                 loginDetails.setPassword(resetDto.getNewPassword());
                 loginRepo.save(loginDetails);
                 return new ResponseEntity<>("Password reset successfully", HttpStatus.OK);

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(originPatterns = {"*"})
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -18,15 +19,15 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<StudentDto>> getStudents(){
         return studentService.getStudents();
     }
 
     @GetMapping ("/student-profile")
-    public ResponseEntity<StudentDto> getStudentProfile(@RequestParam String username)
+    public ResponseEntity<StudentDto> getStudentProfile(@RequestParam String userName)
     {
-        return studentService.getStudentProfile(username);
+        return studentService.getStudentProfile(userName);
     }
 
     @PostMapping("/create-student")

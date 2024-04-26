@@ -13,5 +13,5 @@ public class AdminDto {
     String mobileNumber;
     String course;
     String collegeName;
-    String username;
+    String userName;
 }

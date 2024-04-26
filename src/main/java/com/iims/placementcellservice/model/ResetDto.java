@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ResetDto {
 
-    String username;
+    String userName;
     String validationString;
     String newPassword;
 }

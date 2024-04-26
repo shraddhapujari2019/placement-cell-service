@@ -9,7 +9,7 @@ import java.sql.Date;
 @Data
 public class LoginDetails {
     @Id
-    String username;
+    String userName;
     String password;
     String isAdmin;
     Date lastLoginDate;

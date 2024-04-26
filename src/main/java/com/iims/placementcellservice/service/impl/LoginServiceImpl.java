@@ -21,7 +21,7 @@ public class LoginServiceImpl implements LoginService {
 
     public ResponseEntity<String> userLogin(LoginDto loginDto){
         LoginDetails loginDetails = null;
-        Optional<LoginDetails> userInfo = loginRepo.findById(loginDto.getUsername());
+        Optional<LoginDetails> userInfo = loginRepo.findById(loginDto.getUserName());
         if(userInfo.isPresent() && userInfo.get().getIsAdmin().equals("N")) {
             loginDetails = userInfo.get();
             if (loginDetails.getPassword().equals(loginDto.getPassword()) && loginDetails.getAccountStatus().equals("Active")) {
@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 
     public ResponseEntity<String> adminLogin(LoginDto loginDto){
         LoginDetails loginDetails = null;
-        Optional<LoginDetails> userInfo = loginRepo.findById(loginDto.getUsername());
+        Optional<LoginDetails> userInfo = loginRepo.findById(loginDto.getUserName());
         if(userInfo.isPresent() && userInfo.get().getIsAdmin().equals("Y")) {
             loginDetails = userInfo.get();
             if (loginDetails.getPassword().equals(loginDto.getPassword()) && loginDetails.getAccountStatus().equals("Active")) {

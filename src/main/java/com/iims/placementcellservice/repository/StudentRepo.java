@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface StudentRepo extends JpaRepository<Student, Long> {
-    Optional<Student> findByUsername(String username);
+    Optional<Student> findByUserName(String userName);
     @Query( value = "SELECT * FROM STUDENT_INFO sd JOIN PLACEMENT_STATUS ps on sd.STUDENT_ID = ps.STUDENT_ID",
             nativeQuery = true)
     List<Student> getPlacedStudents();

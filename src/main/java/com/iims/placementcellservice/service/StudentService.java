@@ -11,12 +11,12 @@ public interface StudentService {
 
     ResponseEntity<List<StudentDto>> getStudents();
 
-    ResponseEntity<String> createStudentProfile(StudentDto student);
+    ResponseEntity<String> createStudentProfile(StudentDto studentDto);
     ResponseEntity<LoginDto> createStudentLoginUser(LoginDto loginDto);
 
     ResponseEntity<String> resetStudentPassword(ResetDto resetDto);
 
     ResponseEntity<String> updateStudentProfile(StudentDto studentDto);
 
-    ResponseEntity<StudentDto> getStudentProfile(String username);
+    ResponseEntity<StudentDto> getStudentProfile(String userName);
 }

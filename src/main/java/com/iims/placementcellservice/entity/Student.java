@@ -138,6 +138,6 @@ public class Student {
     private String role;
 
     @Column(name = "USER_NAME")
-    private String username;
+    private String userName;
 
 }
