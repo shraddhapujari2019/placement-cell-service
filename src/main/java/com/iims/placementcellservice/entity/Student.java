@@ -3,7 +3,7 @@ package com.iims.placementcellservice.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Data
 @Entity(name = "student_info")
@@ -12,7 +12,7 @@ public class Student {
     @Id
     @Column(name = "STUDENT_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @Column(name = "ROLL_NUMBER", nullable = false)
     private String rollNumber;
@@ -27,7 +27,7 @@ public class Student {
     private String lastName;
 
     @Column(name = "DATE_OF_BIRTH")
-    private Timestamp dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "GENDER")
     private String gender;
@@ -54,7 +54,7 @@ public class Student {
     private String passingYear;
 
     @Column(name = "SEMESTER")
-    private String semester;
+    private int semester;
 
     @Column(name = "DIVISION")
     private String division;
@@ -66,13 +66,13 @@ public class Student {
     private String sscPassingYear;
 
     @Column(name = "SSC_MARKS")
-    private String sscMarks;
+    private float sscMarks;
 
     @Column(name = "HSC_PASSING_YEAR")
     private String hscPassingYear;
 
     @Column(name = "HSC_MARKS")
-    private String hscMarks;
+    private float hscMarks;
 
     @Column(name = "HIGHEST_QUALIFICATION_NAME")
     private String highestQualificationName;
@@ -81,7 +81,7 @@ public class Student {
     private String highestQualificationPassingYear;
 
     @Column(name = "HIGHEST_QUALIFICATION_MARKS")
-    private String highestQualificationMarks;
+    private float highestQualificationMarks;
 
     @Column(name = "OTHER_GRADUATION_NAME")
     private String otherGraduationName;
@@ -90,28 +90,31 @@ public class Student {
     private String otherGraduationPassingYear;
 
     @Column(name = "OTHER_GRADUATION_MARKS")
-    private String otherGraduationMarks;
+    private float otherGraduationMarks;
 
     @Column(name = "GAP")
     private String gap;
 
     @Column(name = "GAP_START_DATE")
-    private Timestamp gapStartDate;
+    private Date gapStartDate;
 
     @Column(name = "GAP_END_DATE")
-    private Timestamp gapEndDate;
+    private Date gapEndDate;
 
-    @Column(name = "SEM_1_MARKS")
-    private Integer sem1Marks;
+    @Column(name = "SEM_1_SGPA")
+    private float sem1Sgpa;
 
-    @Column(name = "SEM_2_MARKS")
-    private Integer sem2Marks;
+    @Column(name = "SEM_2_SGPA")
+    private float sem2Sgpa;
 
-    @Column(name = "SEM_3_MARKS")
-    private Integer sem3Marks;
+    @Column(name = "SEM_3_SGPA")
+    private float sem3Sgpa;
 
-    @Column(name = "SEM_4_MARKS")
-    private Integer sem4Marks;
+    @Column(name = "SEM_4_SGPA")
+    private float sem4Sgpa;
+
+    @Column(name = "AGG_CGPA")
+    private float aggCgpa;
 
     @Column(name = "ACTIVE_BACKLOG")
     private Integer activeBacklog;
@@ -123,10 +126,10 @@ public class Student {
     private String experience;
 
     @Column(name = "EXPERIENCE_START_DATE")
-    private Timestamp experienceStartDate;
+    private Date experienceStartDate;
 
     @Column(name = "EXPERIENCE_END_DATE")
-    private Timestamp experienceEndDate;
+    private Date experienceEndDate;
 
     @Column(name = "COMPANY_NAME")
     private String companyName;

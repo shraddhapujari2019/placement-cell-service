@@ -11,7 +11,7 @@ public class CompanyDetails {
     @Id
     @Column(name = "COMPANY_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long companyId;
+    private int companyId;
     @Column(name = "COMPANY_NAME")
     private String companyName;
     @Column(name = "ORG_TYPE")
@@ -27,11 +27,11 @@ public class CompanyDetails {
     @Column(name = "ROLE")
     private String role;
 
-    public long getCompanyId() {
+    public int getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(long companyId) {
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
 
