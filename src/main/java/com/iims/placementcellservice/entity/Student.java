@@ -140,7 +140,7 @@ public class Student {
     @Column(name = "ROLE")
     private String role;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "USERNAME")
     private String username;
 
 }
