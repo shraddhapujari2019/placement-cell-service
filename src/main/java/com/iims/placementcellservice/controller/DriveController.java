@@ -1,6 +1,7 @@
 package com.iims.placementcellservice.controller;
 
 import com.iims.placementcellservice.entity.Drive;
+import com.iims.placementcellservice.model.CompanyDriveDto;
 import com.iims.placementcellservice.model.DriveDto;
 import com.iims.placementcellservice.service.DriveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,11 @@ public class DriveController {
     public ResponseEntity<List<Drive>> getDriveDetails(){
         return driveService.getAllDrives();
     }
+
+    @GetMapping("/get-all-drives")
+    public ResponseEntity<List<CompanyDriveDto>> getAllDrivesWithCompany()
+    {
+        return driveService.getAllDrivesWithCompany();
+    }
+
 }

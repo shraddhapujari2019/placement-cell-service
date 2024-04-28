@@ -1,6 +1,7 @@
 package com.iims.placementcellservice.controller;
 
 import com.iims.placementcellservice.model.*;
+import com.iims.placementcellservice.service.ApplicationService;
 import com.iims.placementcellservice.service.PlacementService;
 import com.iims.placementcellservice.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class AdminController {
 
     @Autowired
     PlacementService placementService;
+
+    @Autowired
+    ApplicationService applicationService;
     @PostMapping ("/create-admin")
     public ResponseEntity<LoginDto> createAdmin(@RequestBody LoginDto loginDto)
     {
@@ -56,4 +60,9 @@ public class AdminController {
         return adminService.getPlacedStudents();
     }
 
+    @GetMapping ("/get-all-applications")
+    public ResponseEntity<List<ApplicationDto>> getAllApplications()
+    {
+        return applicationService.getAllApplications();
+    }
 }

@@ -1,14 +1,10 @@
 package com.iims.placementcellservice.controller;
 
-import com.iims.placementcellservice.entity.Student;
-import com.iims.placementcellservice.model.ApplicationDto;
-import com.iims.placementcellservice.model.LoginDto;
-import com.iims.placementcellservice.model.ResetDto;
-import com.iims.placementcellservice.model.StudentDto;
+import com.iims.placementcellservice.model.*;
 import com.iims.placementcellservice.service.ApplicationService;
+import com.iims.placementcellservice.service.DriveService;
 import com.iims.placementcellservice.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +20,10 @@ public class StudentController {
     @Autowired
     private ApplicationService applicationService;
 
-    @GetMapping
+    @Autowired
+    private DriveService driveService;
+
+    @GetMapping ("/list")
     public ResponseEntity<List<StudentDto>> getStudents(){
         return studentService.getStudents();
     }
@@ -59,15 +58,21 @@ public class StudentController {
     }
 
     @PostMapping("/create-application")
-    public ResponseEntity<String> createPlacementApplication(@RequestBody ApplicationDto applicationDto)
+    public ResponseEntity<String> createPlacementApplication(@RequestParam int driveId,  @RequestParam String username, @RequestBody(required = false) ApplicationDto applicationDto)
     {
-        return applicationService.createPlacementApplication(applicationDto);
+        return applicationService.createPlacementApplication(driveId, username);
     }
 
     @GetMapping("/get-applications")
-    public ResponseEntity<List<ApplicationDto>> getAppliedDrives(@RequestParam long student_id)
+    public ResponseEntity<ApplicationDto> getAppliedDrives(@RequestParam long studentId)
     {
-     //   return applicationService.getAppliedDrives(applicationDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return applicationService.getAppliedDrives(studentId);
+        //return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/get-drives")
+    public ResponseEntity<List<CompanyDriveDto>> getAllDrives(@RequestParam String username)
+    {
+        return driveService.getAllDrives(username);
     }
 }

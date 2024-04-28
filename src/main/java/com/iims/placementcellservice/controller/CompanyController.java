@@ -17,17 +17,18 @@ public class CompanyController {
     CompanyDetailsService companyDetailsService;
 
     @PostMapping("/create")
-    public ResponseEntity<CompanyDetailsDto> createCompanyDetails(@RequestBody CompanyDetailsDto companyDetailsDto){
-       return companyDetailsService.createCompanyDetails(companyDetailsDto);
+    public ResponseEntity<CompanyDetailsDto> createCompanyDetails(@RequestBody CompanyDetailsDto companyDetailsDto) {
+        return companyDetailsService.createCompanyDetails(companyDetailsDto);
     }
 
     @PutMapping("/update-company-details")
-    public ResponseEntity<String> updateCompanyDetails(@RequestBody CompanyDetailsDto companyDetailsDto){
+    public ResponseEntity<String> updateCompanyDetails(@RequestBody CompanyDetailsDto companyDetailsDto) {
         return companyDetailsService.updateCompanyDetails(companyDetailsDto);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<CompanyDetailsDto>> getCompanyDetails(){
+    public ResponseEntity<List<CompanyDetailsDto>> getCompanyDetails() {
         return companyDetailsService.getAllCompanies();
     }
-    }
+
+}

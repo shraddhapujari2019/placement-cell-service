@@ -2,6 +2,7 @@ package com.iims.placementcellservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iims.placementcellservice.entity.Drive;
+import com.iims.placementcellservice.model.CompanyDriveDto;
 import com.iims.placementcellservice.model.DriveDto;
 import com.iims.placementcellservice.repository.DriveRepo;
 import com.iims.placementcellservice.service.DriveService;
@@ -15,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DriveServiceImpl implements DriveService {
@@ -64,5 +66,15 @@ public class DriveServiceImpl implements DriveService {
             return new ResponseEntity<>("Drive details updated successfully", HttpStatus.OK);
         }
         return new ResponseEntity<>("Drive details update failed",HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<List<CompanyDriveDto>> getAllDrives(String username) {
+        return new ResponseEntity<>(driveRepo.getAllDrives(username).stream().map(drive->driveMapper.convertValue(drive,CompanyDriveDto.class)).collect(Collectors.toList()),HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<List<CompanyDriveDto>> getAllDrivesWithCompany() {
+        return new ResponseEntity<>(driveRepo.getAllDrivesWithCompany().stream().map(drive->driveMapper.convertValue(drive,CompanyDriveDto.class)).collect(Collectors.toList()),HttpStatus.OK);
     }
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ApplicationService {
     ResponseEntity<List<ApplicationDto>> getAllApplications();
-    ResponseEntity<String> createPlacementApplication(ApplicationDto applicationDto);
+    ResponseEntity<String> createPlacementApplication(int driveId, String username);
+
+    ResponseEntity<ApplicationDto> getAppliedDrives(long studentId);
 
 }
