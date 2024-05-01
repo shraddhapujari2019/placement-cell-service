@@ -48,7 +48,8 @@ public class StudentServiceImpl implements StudentService {
             StudentDto studentDto = mapper.convertValue(student, StudentDto.class);
             return new ResponseEntity<>(studentDto, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        //chutya Ajya ... empty user return kar ...
+        return new ResponseEntity<>(new StudentDto(),HttpStatus.OK);
     }
     @Override
     public ResponseEntity<String> createStudentProfile(StudentDto studentDto) {
